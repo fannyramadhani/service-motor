@@ -12,17 +12,21 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// API Data Pelanggan
-Route::apiResource('pelanggan', PelangganApiController::class);
+Route::name('api.')->group(function () {
 
-// API Data Kendaraan
-Route::apiResource('kendaraan', KendaraanApiController::class);
+    // API Data Pelanggan
+    Route::apiResource('pelanggan', PelangganApiController::class);
 
-// API Daftar Service
-Route::apiResource('service', ServiceApiController::class);
+    // API Data Kendaraan
+    Route::apiResource('kendaraan', KendaraanApiController::class);
 
-// API Data Service
-Route::apiResource('data-service', DataServiceApiController::class);
+    // API Daftar Service
+    Route::apiResource('service', ServiceApiController::class);
 
-// API Pembayaran Service
-Route::apiResource('pembayaran', PembayaranApiController::class);
+    // API Data Service
+    Route::apiResource('data-service', DataServiceApiController::class);
+
+    // API Pembayaran
+    Route::apiResource('pembayaran', PembayaranApiController::class);
+
+});
